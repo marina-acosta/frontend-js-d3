@@ -3,6 +3,11 @@
 Technical test using pure javascript and CSS.
 The goal of this project is to render three donut charts, using D3 library.
 The architecture uses MVC pattern, having one single view consuming three different models.
+Data is consumed from the endpoints:
+
+- https://5c90720d8447f30014cb8425.mockapi.io/api/v1/revenue
+- https://5c90720d8447f30014cb8425.mockapi.io/api/v1/impresions
+- https://5c90720d8447f30014cb8425.mockapi.io/api/v1/visions
 
 ## Get started
 

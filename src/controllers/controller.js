@@ -5,6 +5,8 @@ export default class Controller {
     this.label = label;
   }
   render() {
-    this.view.render({ ...this.model.getData(), label: this.label });
+    this.model.getData().then(data => {
+      this.view.render({ ...data, label: this.label });
+    });
   }
 }

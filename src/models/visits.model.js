@@ -1,29 +1,8 @@
-export default class VisitsModel {
-  constructor() {
-    this.data = {
-      tablet: {
-        percentage: 80,
-        value: 480000000
-      },
-      smartphone: {
-        percentage: 20,
-        value: 120000000
-      },
-      historical: [
-        300000000,
-        400000000,
-        350000000,
-        500000000,
-        450000000,
-        610000000,
-        600000000,
-        610000000,
-        600000000
-      ]
-    };
-  }
+import BaseModel from "./base.model";
+import { api } from "../utils";
 
-  getData() {
-    return this.data;
+export default class VisitsModel extends BaseModel {
+  constructor() {
+    super(api.visits);
   }
 }
