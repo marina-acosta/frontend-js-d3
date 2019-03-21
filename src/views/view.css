@@ -1,0 +1,22 @@
+body {
+  font-family: arial, sans-serif;
+  font-size: 16px;
+}
+
+.view-container {
+  display: inline-block;
+}
+
+.reference-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reference-item {
+  display: inline-block;
+  text-align: left;
+}
+
+.reference-label {
+  font-weight: 600;
+}
