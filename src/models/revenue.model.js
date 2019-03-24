@@ -4,5 +4,6 @@ import { api } from "../utils";
 export default class RevenueModel extends BaseModel {
   constructor() {
     super(api.revenue);
+    this.unit = "€";
   }
 }

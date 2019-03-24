@@ -2,6 +2,7 @@ export default class BaseModel {
   constructor(resource) {
     this.resource = resource;
     this.data = this.fetchData();
+    this.unit = "";
   }
 
   async fetchData() {
@@ -14,6 +15,6 @@ export default class BaseModel {
   }
 
   getData() {
-    return this.data;
+    return this.data.then(data => ({ ...data, unit: this.unit }));
   }
 }

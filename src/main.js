@@ -1,5 +1,5 @@
 import { $on } from "./utils";
-import { View } from "./views";
+import { Chart, Slider } from "./views";
 import { RevenueModel, ImpresionsModel, VisitsModel } from "./models";
 import { Controller } from "./controllers";
 
@@ -8,19 +8,25 @@ class App {
     const revenueModel = new RevenueModel();
     const impresionsModel = new ImpresionsModel();
     const visitsModel = new VisitsModel();
-    const view = new View();
-    this.revenueCtrler = new Controller(revenueModel, view, "revenue");
-    this.impresionsCtrler = new Controller(impresionsModel, view, "impresions");
-    this.visitsCtrler = new Controller(visitsModel, view, "visits");
+    this.slider = new Slider("app");
+    const chart = new Chart();
+    this.revenueCtrler = new Controller(revenueModel, chart, "revenue");
+    this.impresionsCtrler = new Controller(
+      impresionsModel,
+      chart,
+      "impresions"
+    );
+    this.visitsCtrler = new Controller(visitsModel, chart, "visits");
   }
 }
 
 const app = new App();
 
 const render = () => {
-  app.revenueCtrler.render();
-  app.impresionsCtrler.render();
-  app.visitsCtrler.render();
+  const wrapper = app.slider.init(["revenue", "impresions", "visits"]);
+  app.revenueCtrler.render(wrapper);
+  app.impresionsCtrler.render(wrapper);
+  app.visitsCtrler.render(wrapper);
 };
 
 $on(window, "load", render);

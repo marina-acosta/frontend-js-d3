@@ -2,8 +2,8 @@
 
 Technical test using pure javascript and CSS.
 The goal of this project is to render three donut charts, using D3 library.
-The architecture uses MVC pattern, having one single view consuming three different models.
-Data is consumed from the endpoints:
+The architecture uses MVC pattern, having one single view connected to three different models.
+Data is consumed from this endpoints:
 
 - https://5c90720d8447f30014cb8425.mockapi.io/api/v1/revenue
 - https://5c90720d8447f30014cb8425.mockapi.io/api/v1/impresions
@@ -36,7 +36,7 @@ No need to rebuild after code changes
 
 ## Improvements to be done
 
+- Fill the donut chrts with the area chart (historical values).
 - Use of SCSS.
-- Styled components instead of global.
-- Use of webpack / webpack-dev-server.
-- Automatically open the browser when running the application.
+- Styled components instead of global stylesheets.
+- Use of webpack and webpack-dev-server.

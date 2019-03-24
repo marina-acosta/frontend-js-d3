@@ -1,5 +1,7 @@
-import View from "./view";
+import Chart from "./chart/Chart";
+import Slider from "./slider/Slider";
 
 module.exports = {
-  View
+  Chart,
+  Slider
 };

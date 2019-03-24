@@ -4,9 +4,9 @@ export default class Controller {
     this.view = view;
     this.label = label;
   }
-  render() {
+  render(wrapper) {
     this.model.getData().then(data => {
-      this.view.render({ ...data, label: this.label });
+      this.view.render({ ...data, label: this.label, wrapper });
     });
   }
 }

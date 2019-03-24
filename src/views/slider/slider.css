@@ -1,0 +1,37 @@
+#slider {
+  margin: 2em auto;
+  overflow: hidden;
+  padding-left: calc((100vw - 400px) / 2);
+}
+
+#slider-wrapper {
+  width: 9999px;
+  position: relative;
+  transition: left 400ms ease-in;
+}
+
+.slide {
+  float: left;
+  position: relative;
+  overflow: hidden;
+}
+
+#slider-nav {
+  margin: 1em 0;
+  text-align: center;
+}
+
+#slider-nav a {
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  margin: 0 8px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+#slider-nav a.current {
+  background-color: #717171;
+}
