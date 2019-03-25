@@ -24,9 +24,9 @@ const app = new App();
 
 const render = () => {
   const wrapper = app.slider.init(["revenue", "impresions", "visits"]);
-  app.revenueCtrler.render(wrapper);
-  app.impresionsCtrler.render(wrapper);
-  app.visitsCtrler.render(wrapper);
+  app.revenueCtrler.render(wrapper.revenue);
+  app.impresionsCtrler.render(wrapper.impresions);
+  app.visitsCtrler.render(wrapper.visits);
 };
 
 $on(window, "load", render);

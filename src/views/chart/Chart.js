@@ -3,10 +3,6 @@ import { format } from "../../utils/util";
 
 export default class View {
   render({ wrapper, tablet, smartphone, label, unit }) {
-    const graphContainer = document.createElement("div");
-    graphContainer.id = label;
-    graphContainer.className = `chart-container slide ${label}`;
-    wrapper.appendChild(graphContainer);
     this.createChart(
       label,
       smartphone.percentage,
@@ -14,13 +10,7 @@ export default class View {
       unit,
       themes[label]
     );
-    this.createReference(
-      graphContainer,
-      tablet,
-      smartphone,
-      unit,
-      themes[label]
-    );
+    this.createReference(wrapper, tablet, smartphone, unit, themes[label]);
   }
 
   createChart(label, percentage, value, unit, colors) {

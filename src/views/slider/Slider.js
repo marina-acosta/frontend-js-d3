@@ -1,6 +1,12 @@
 export default class Slider {
-  constructor(parent, slides = ["revenue", "impresions", "visits"]) {
+  constructor(parent) {
     this.node = document.getElementById(parent);
+    this.containers = [];
+  }
+}
+
+Slider.prototype = {
+  init: function(slides) {
     // create slider
     const slider = document.createElement("div");
     slider.id = "slider";
@@ -13,25 +19,26 @@ export default class Slider {
     const sliderNav = document.createElement("div");
     sliderNav.id = "slider-nav";
     this.node.appendChild(sliderNav);
-    // create nav-buttons for each slide
     slides.forEach((slide, ix) => {
-      const slideLink = document.createElement("a");
+      // create contianer for each slide
+      let container = document.createElement("div");
+      container.id = slide;
+      container.className = `chart-container slide ${slide}`;
+      sliderWrapper.appendChild(container);
+      this.containers[slide] = container;
+      // create nav-buttons for each slide
+      let slideLink = document.createElement("a");
       slideLink.href = "#";
       slideLink.setAttribute("data-slide", `${ix}`);
       slideLink.setAttribute("class", ix === 0 && "current");
       sliderNav.appendChild(slideLink);
     });
-    this.init(slides);
-  }
-}
 
-Slider.prototype = {
-  init: function() {
     this.links = this.node.querySelectorAll("#slider-nav a");
     this.wrapper = this.node.querySelector("#slider-wrapper");
     this.wrapper.style.left = "calc((100vw - 400px) / -4)";
     this.links.forEach(link => this.slide(link));
-    return this.wrapper;
+    return this.containers;
   },
 
   slide: function(element) {
