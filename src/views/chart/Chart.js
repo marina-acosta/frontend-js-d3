@@ -1,5 +1,6 @@
-import { graph, themes } from "../helpers";
+import { themes } from "../helpers";
 import { format } from "../../utils/util";
+import { donut } from "./draw-graphs";
 
 export default class View {
   render({ wrapper, tablet, smartphone, label, unit }) {
@@ -14,7 +15,7 @@ export default class View {
   }
 
   createChart(label, percentage, value, unit, colors) {
-    graph(`#${label}`, label, percentage, format(value, unit), colors);
+    donut(`#${label}`, label, percentage, format(value, unit), colors);
   }
 
   createReference(parent, tablet, smartphone, unit, colors) {
@@ -22,28 +23,18 @@ export default class View {
     referenceContainer.className = "reference-container";
     parent.appendChild(referenceContainer);
     this.createReferenceItem(referenceContainer, "Tablet", tablet, unit, {
-      label: { color: colors.primaryColor },
-      item: {}
+      color: colors.primaryColor
     });
     this.createReferenceItem(
       referenceContainer,
       "Smartphone",
       smartphone,
       unit,
-      {
-        label: { color: colors.secondaryColor },
-        item: {}
-      }
+      { color: colors.secondaryColor }
     );
   }
 
-  createReferenceItem(
-    parent,
-    label,
-    data,
-    unit,
-    theme = { item: {}, label: {} }
-  ) {
+  createReferenceItem(parent, label, data, unit, labelTheme = {}) {
     // create container for item
     const item = document.createElement("div");
     item.className = "reference-item";
@@ -63,9 +54,8 @@ export default class View {
     item.appendChild(value);
 
     // add styles
-    Object.keys(theme.item).forEach(key => (item.style[key] = theme.item[key]));
-    Object.keys(theme.label).forEach(
-      key => (itemLabel.style[key] = theme.label[key])
+    Object.keys(labelTheme).forEach(
+      key => (itemLabel.style[key] = labelTheme[key])
     );
   }
 }

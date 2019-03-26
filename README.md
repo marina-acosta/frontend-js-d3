@@ -32,7 +32,7 @@ No need to rebuild after code changes
 
 ## Run tests
 
-- TBD
+- Run `npm test`
 
 ## Improvements to be done
 

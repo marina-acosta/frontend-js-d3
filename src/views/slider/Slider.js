@@ -3,10 +3,8 @@ export default class Slider {
     this.node = document.getElementById(parent);
     this.containers = [];
   }
-}
 
-Slider.prototype = {
-  init: function(slides) {
+  init(slides) {
     // create slider
     const slider = document.createElement("div");
     slider.id = "slider";
@@ -39,36 +37,35 @@ Slider.prototype = {
     this.wrapper.style.left = "calc((100vw - 400px) / -4)";
     this.links.forEach(link => this.slide(link));
     return this.containers;
-  },
+  }
 
-  slide: function(element) {
-    var self = this;
+  slide(element) {
+    const self = this;
     element.addEventListener(
       "click",
       function(e) {
         e.preventDefault();
-        var a = this;
+        const a = this;
         self.setCurrentLink(a);
-        var index = parseInt(a.getAttribute("data-slide"), 10) + 1;
-        var currentSlide = document.querySelector(
+        const index = parseInt(a.getAttribute("data-slide"), 10) + 1;
+        const currentSlide = document.querySelector(
           ".slide:nth-child(" + index + ")"
         );
         self.wrapper.style.left = "-" + currentSlide.offsetLeft + "px";
       },
       false
     );
-  },
-  setCurrentLink: function(link) {
-    var parent = link.parentNode;
-    var a = parent.querySelectorAll("a");
-
-    link.className = "current";
-
-    for (var j = 0; j < a.length; ++j) {
-      var cur = a[j];
-      if (cur !== link) {
-        cur.className = "";
-      }
-    }
   }
-};
+
+  setCurrentLink(link) {
+    // add current class to link
+    link.className = "current";
+    // empty other links class names
+    const links = link.parentNode.querySelectorAll("a");
+    links.forEach(l => {
+      if (l !== link) {
+        l.className = "";
+      }
+    });
+  }
+}
